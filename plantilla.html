@@ -1,195 +1,319 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #C8CDCD;
-        }
-        .email-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(5, 20, 100, 0.2);
-        }
-        .header {
-            background:  #0014DC ;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            border-bottom: 5px solid #6E8CC8;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-        .header p {
-            margin: 10px 0 0;
-            opacity: 0.9;
-            font-size: 16px;
-        }
-        .content {
-            padding: 30px;
-        }
-        .requirement-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #C8CDCD;
-        }
-        .requirement-table td {
-            padding: 15px;
-            border-bottom: 1px solid #C8CDCD;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        .requirement-table tr:last-child td {
-            border-bottom: none;
-        }
-        .requirement-table td:first-child {
-            background-color: #f8fafd;
-            font-weight: 600;
-            width: 35%;
-            color: #051464;
-            border-right: 1px solid #C8CDCD;
-        }
-        .requirement-table td:last-child {
-            color: #051464;
-        }
-        .requirement-table tr:hover td {
-            background-color: rgba(110, 140, 200, 0.1);
-        }
-        .section-title {
-            color: #0014DC;
-            font-size: 18px;
-            font-weight: 600;
-            margin: 20px 0 10px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #6E8CC8;
-        }
-        .footer {
-            background-color: #f8fafd;
-            padding: 20px;
-            text-align: center;
-            font-size: 13px;
-            color: #051464;
-            border-top: 1px solid #C8CDCD;
-        }
-        .status-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 500;
-            background-color: #6E8CC8;
-            color: white;
-        }
-        .company-logo {
-            margin-bottom: 15px;
-        }
-        .priority-high {
-            color: #0014DC;
-            font-weight: bold;
-        }
-        .details-box {
-            background-color: #f8fafd;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #C8CDCD;
-        }
-    </style>
-</head>
+<style>
+    .main-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        background-color: #C8CDCD;
+    }
+
+    .content-table {
+        width: 800px;
+        border-collapse: collapse;
+        margin: 40px auto;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+        padding: 40px;
+        background: #0014DC;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .header-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .header p {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Main Content */
+    .main-content {
+        padding: 30px;
+    }
+
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        color: #0014DC;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #0014DC;
+        padding-bottom: 5px;
+    }
+
+    .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Distribuye el ancho de columnas equitativamente */
+}
+
+    .data-cell {
+    width: 33.33%; /* Igual ancho para cada celda */
+    padding: 15px;
+    vertical-align: top;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    
+}
+
+    .data-container {
+    display: flex;
+    flex-direction: column;
+}
+
+    .data-icon {
+        font-size: 20px;
+        color: #0014DC;
+        margin-right: 10px;
+    }
+
+    .data-label {
+        font-weight: bold;
+        color: #051464;
+        margin-bottom: 5px;
+    }
+
+    .data-value {
+        color: #555555;
+    }
+
+    .details {
+        margin-top: 10px;
+        color: #666666;
+        font-size: 14px;
+    }
+
+    .service-title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 18px;
+        color: #0014DC;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 10px;
+        background: #0014DC;
+        color: #ffffff;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .social-links {
+        margin-top: 15px;
+    }
+
+    .social-links a {
+        margin: 0 10px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .social-links a:hover {
+        text-decoration: underline;
+    }
+
+    .copyright {
+        margin-top: 20px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .tg-xc6f{background-color:#0014dc;color:#ffffff;font-size:32px;font-weight:bold;text-align:left;vertical-align:top}
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    th {
+      background-color: #f2f2f2;
+      color: blue;
+    }
+    td {
+      word-wrap: break-word;
+    }
+    .subtitle {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #0014DC;
+    }
+.sub-row {
+    padding-top: 10px;
+    border-top: 1px solid #ccc; /* Línea divisoria para separar visualmente */
+}
+</style>
 <body>
-    <div class="email-container">
-        <div class="header">
-            <h1>Requirement Details</h1>
-            <p>Important Equipment Request Information</p>
-        </div>
-        <div class="content">
-            <div class="section-title">Master Request Information</div>
-            <table class="requirement-table">
-                <tr>
-                    <td>Master Request ID</td>
-                    <td><strong># @{outputs('Get_a_row_by_ID')?['body/_ecp_idmasterrequirement_value@OData.Community.Display.V1.FormattedValue']}</strong></td>
-                </tr>
-                <tr>
-                    <td>Cost Center</td>
-                    <td>[CostCenter]</td>
-                </tr>
-                <tr>
-                    <td>Created By</td>
-                    <td>@{outputs('Get_a_row_by_ID')?['body/_createdby_value@OData.Community.Display.V1.FormattedValue']}</td>
-                </tr>
-                <tr>
-                    <td>Request Status</td>
-                    <td><span class="status-badge">@{outputs('Get_a_row_by_ID')?['body/statuscode@OData.Community.Display.V1.FormattedValue']}</span></td>
-                </tr>
-            </table>
+    <table class="main-table">
+        <tr>
+            <td align="center">
+                <table class="content-table">
+                  <thead>
+                    <tr>
+                <th class="tg-xc6f"><center><img src="data:image/png;base64,@{outputs('Compose')}" width="1000" height="217"></center></th>
+                    </tr>
+                </thead>
+                    <!-- Main Content -->
+                    <tr>
+                        <td class="main-content">
+                            <div class="service-title">REQUIREMENT DETAILS</div>
+                            <div class="subtitle">@{outputs('Get_a_row_by_ID')?['body/diesel_type_service_required@OData.Community.Display.V1.FormattedValue']}</div>
+                            <!-- General Information -->
+                            <div class="section">
+                                <h2 class="section-title">
+                                    <i class="fas fa-info-circle"></i> General Information
+                                </h2>
+                                <table class="data-table">
+                                    <tr>
+                                        <td class="data-cell">
+                                            <div class="data-container">
+                                                <i class="fas fa-globe data-icon"></i>
+                                                <div>
+                                                    <strong class="data-label">Requirement ID</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_requirement_id']}</span>
+                                                </div>
+                                                <div class="sub-row">
+                                                    <strong class="data-label">Status</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_status_requirement@OData.Community.Display.V1.FormattedValue']}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="data-cell">
+                                            <div class="data-container">
+                                                <i class="fas fa-draw-polygon data-icon"></i>
+                                                <div>
+                                                    <strong class="data-label">Cost Center</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/_diesel_cost_center_value@OData.Community.Display.V1.FormattedValue']}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- Fuel Details -->
+                            <div class="section">
+                                <h2 class="section-title">
+                                    <i class="fas fa-gas-pump"></i> Fuel Details
+                                </h2>
+                                <table class="data-table">
+                                    <tr>
+                                        <td class="data-cell">
+                                            <div class="data-container">
+                                                <i class="fas fa-tint data-icon"></i>
+                                                <div>
+                                                    <strong class="data-label"># Gallons Required</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_required_cant']}</span>
+                                                </div>
+                                            </div>
+                                        </td>
 
-            <div class="section-title">Request Details</div>
-            <table class="requirement-table">
-                <tr>
-                    <td>EPP Name</td>
-                    <td><strong>@{outputs('Get_a_row_by_ID')?['body/_ecp_eppname_value@OData.Community.Display.V1.FormattedValue']}</strong></td>
-                </tr>
-                <tr>
-                    <td>Employee</td>
-                    <td>@{outputs('Get_a_row_by_ID')?['body_ecp_fk_employee_value@OData.Community.Display.V1.FormattedValue']}</td>
-                </tr>
-                <tr>
-                    <td>Blood Type</td>
-                    <td><span class="status-badge">@{outputs('Get_a_row_by_ID')?['body/ecp_blood_emp_request@OData.Community.Display.V1.FormattedValue']}</span></td>
-                </tr>
-                <tr>
-                    <td>Size</td>
-                    <td>@{outputs('Get_a_row_by_ID')?['body/ecp_size']}</td>
-                </tr>
-                <tr>
-                    <td>Quantity</td>
-                    <td>@{outputs('Get_a_row_by_ID')?['body/ecp_cant@OData.Community.Display.V1.FormattedValue']} </td>
-                </tr>
-                <tr>
-                    <td>Status</td>
-                    <td><span class="status-badge">@{outputs('Get_a_row_by_ID')?['body/statuscode@OData.Community.Display.V1.FormattedValue']}</span></td>
-                </tr>
-            </table>
+                                        <td class="data-cell">
+                                            <div class="data-container">
+                                                <i class="fas fa-tint data-icon"></i>
+                                                <div>
+                                                    <strong class="data-label">Cost Gallon</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_cost_gallon_diesel@OData.Community.Display.V1.FormattedValue']}</span>
+                                                </div>
+                                            </div>
+                                        </td>
 
-            <div class="section-title">Additional Information</div>
-            <table class="requirement-table">
-                <tr>
-                    <td>Out Policy</td>
-                    <td>@{outputs('Get_a_row_by_ID')?['body/ecp_out_policy@OData.Community.Display.V1.FormattedValue']}</td>
-                </tr>
-                <tr>
-                    <td>Exemption Number</td>
-                    <td>@{outputs('Get_a_row_by_ID')?['body/ecp_exemption_number']}</td>
-                </tr>
-                <tr>
-                    <td>Location</td>
-                    <td>[Location_delivery]</td>
-                </tr>
-            </table>
+                                        <td class="data-cell">
+                                            <div class="data-container">
+                                                <i class="fas fa-tint data-icon"></i>
+                                                <div>
+                                                    <strong class="data-label">Total Required</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_total_required']}</span>
+                                                </div>
+                                            </div>
+                                        </td>
 
-            <div class="details-box">
-                <strong>Exemption Details:</strong><br>
-                @{outputs('Get_a_row_by_ID')?['body/ecp_exemption_details']}
-            </div>
+                                    </tr>
+                            <!-- Nueva fila agregada -->
+                                    <tr>
+                                        <td class="data-cell">
+                                            <div class="data-container">
+                                                <i class="fas fa-tint data-icon"></i>
+                                                <div>
+                                                    <strong class="data-label"># Gallons Delivered</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_delivered_cant']}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="data-cell">
+                                            <div class="data-container">
+                                                <i class="fas fa-tint data-icon"></i>
+                                                <div>
+                                                    <strong class="data-label">Cost Gallon</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_cost_gallon_diesel@OData.Community.Display.V1.FormattedValue']}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="data-cell">
+                                            <div class="data-container">
+                                                <i class="fas fa-tint data-icon"></i>
+                                                <div>
+                                                    <strong class="data-label">Total delivered</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_total_delivered@OData.Community.Display.V1.FormattedValue']}</span>
+                                                </div>
+                                                <div class="sub-row">
+                                                    <strong class="data-label">Fuel returned?</strong>
+                                                    <span class="data-value">@{outputs('Get_a_row_by_ID')?['body/diesel_fuel_return@OData.Community.Display.V1.FormattedValue']}</span>
+                                                    @{variables('fuelreturned')}
         </div>
-        <div class="footer">
-            <p>This is an automated notification from the Equipment Management System.</p>
-            <p>Please do not reply to this email. For any questions, contact your supervisor.</p>
-        </div>
-    </div>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!-- Fuel Reception Responsibles -->
+                            <div class="section">
+                                <h2 class="section-title">
+                                    <i class="fas fa-info-circle"></i> Fuel Reception Responsibles
+                                </h2><center>
+@{body('get_reception_responsibles')?['html_table']}</center>
+                            </div> 
+@{variables('var_html_content_mobilization_type')}                           
+@{variables('var_html_onsite')}
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td class="footer">
+                             <p>This notification has been created automatically, please do not reply to this email.</p>
+        <p>This email is classified as private and is for internal use only.</p>
+  <p>Notification generated by the ECP Diesel Control application, developed by the ECP Digital Cell.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
-</html>
+
+
